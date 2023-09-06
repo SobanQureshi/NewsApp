@@ -1,24 +1,22 @@
 import "./App.css";
 
-import React, { Component } from "react";
+import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import News from "./components/News";
 import LoadingBar from "react-top-loading-bar";
 import { useState } from "react";
 
-export default class App extends Component {
-  apiKey = "e07a91a1f5f548619d21f2404845d0bd";
+const App = () => {
+  const [progress, setProgresses] = useState(0)
+  const apiKey = "e07a91a1f5f548619d21f2404845d0bd";
   // process.env.REACT_APP_NEWSAPI
-  state = {
-    progress: 0,
-  };
-  setProgress = (progress) => {
+  const setProgresseses = (progress) => {
     this.setState({ progress: progress });
   };
-  c = "this";
-  pageSize = 5;
-  render() {
+  const c = "this";
+  const pageSize = 5;
+
     return (
       <Router>
         <div>
@@ -26,8 +24,8 @@ export default class App extends Component {
           <LoadingBar
             height={3}
             color="#f11946"
-            progress={this.state.progress}
-            // onLoaderFinished={() => setProgress(0)}
+            progress={progress}
+            // onLoaderFinished={() => setProgresses(0)}
           />
           <Routes>
             <Route
@@ -35,9 +33,9 @@ export default class App extends Component {
               path="/"
               element={
                 <News
-                  setProgress={this.setProgress}
+                  setProgress={setProgresses}
                   key="general"
-                  pageSize={this.pageSize}
+                  pageSize={pageSize}
                   country="us"
                   category="general"
                 />
@@ -48,9 +46,9 @@ export default class App extends Component {
               path="/business"
               element={
                 <News
-                  setProgress={this.setProgress}
+                  setProgress={setProgresses}
                   key="business"
-                  pageSize={this.pageSize}
+                  pageSize={pageSize}
                   country="us"
                   category="business"
                 />
@@ -61,9 +59,9 @@ export default class App extends Component {
               path="/entertainment"
               element={
                 <News
-                  setProgress={this.setProgress}
+                  setProgress={setProgresses}
                   key="entertainment"
-                  pageSize={this.pageSize}
+                  pageSize={pageSize}
                   country="us"
                   category="entertainment"
                 />
@@ -74,9 +72,9 @@ export default class App extends Component {
               path="/health"
               element={
                 <News
-                  setProgress={this.setProgress}
+                  setProgress={setProgresses}
                   key="health"
-                  pageSize={this.pageSize}
+                  pageSize={pageSize}
                   country="us"
                   category="health"
                 />
@@ -87,9 +85,9 @@ export default class App extends Component {
               path="/science"
               element={
                 <News
-                  setProgress={this.setProgress}
+                  setProgress={setProgresses}
                   key="science"
-                  pageSize={this.pageSize}
+                  pageSize={pageSize}
                   country="us"
                   category="science"
                 />
@@ -100,9 +98,9 @@ export default class App extends Component {
               path="/sports"
               element={
                 <News
-                  setProgress={this.setProgress}
+                  setProgress={setProgresses}
                   key="sports"
-                  pageSize={this.pageSize}
+                  pageSize={pageSize}
                   country="us"
                   category="sports"
                 />
@@ -113,9 +111,9 @@ export default class App extends Component {
               path="/technology"
               element={
                 <News
-                  setProgress={this.setProgress}
+                  setProgress={setProgresses}
                   key="technology"
-                  pageSize={this.pageSize}
+                  pageSize={pageSize}
                   country="us"
                   category="technology"
                 />
@@ -125,5 +123,6 @@ export default class App extends Component {
         </div>
       </Router>
     );
-  }
+  
 }
+export default App
